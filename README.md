@@ -73,4 +73,4 @@ We should avoid configuration drifts
 
 ## Who do I talk to? ##
 
-* Foued Hadded (foued.hadded@jadenx.com)
+* JadenX Opration Team (operations@jadenx.com)
