@@ -20,7 +20,7 @@ In this readme we document a docker compose file to deploy all dpi platform serv
 
 All of the following repositories must be cloned into the same folder as this repository (e.g. `../dpi-frontend`)
 
-* dpi-auth0-proxy
+* dpi-auth0-proxy https://github.com/Fouad-maker/dpi-platform/blob/main/dpi-auth0-proxy/README.md
 * dpi-data-models https://github.com/Fouad-maker/dpi-platform/blob/main/dpi-data-models/README.md
 * dpi-frontend
 
