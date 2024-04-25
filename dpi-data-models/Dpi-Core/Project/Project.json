@@ -1,0 +1,797 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome6",
+  "definitions": {
+    "Welcome6": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Project": {
+          "$ref": "#/definitions/Project"
+        }
+      },
+      "required": [
+        "Project"
+      ],
+      "title": "Welcome6"
+    },
+    "Project": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "properties": {
+          "$ref": "#/definitions/ProjectProperties"
+        },
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "$ref": "#/definitions/AddressType"
+        },
+        "x-derived-from": {
+          "type": "string"
+        },
+        "x-disclaimer": {
+          "type": "string"
+        },
+        "x-license-url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ],
+          "qt-uri-extensions": [
+            ".md"
+          ]
+        },
+        "x-model-schema": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ],
+          "qt-uri-extensions": [
+            ".json"
+          ]
+        },
+        "x-model-tags": {
+          "type": "string"
+        },
+        "x-version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "description",
+        "properties",
+        "required",
+        "type",
+        "x-derived-from",
+        "x-disclaimer",
+        "x-license-url",
+        "x-model-schema",
+        "x-model-tags",
+        "x-version"
+      ],
+      "title": "Project"
+    },
+    "ProjectProperties": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "alternateName": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "areaServed": {
+          "$ref": "#/definitions/Address"
+        },
+        "axis": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "challenges": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "dataProvider": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "image": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "dateCreated": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "dateModified": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "delegations": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "delegationsInvolved": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "category": {
+          "$ref": "#/definitions/Category"
+        },
+        "description": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "id": {
+          "$ref": "#/definitions/ID"
+        },
+        "interestGroups": {
+          "$ref": "#/definitions/Category"
+        },
+        "location": {
+          "$ref": "#/definitions/Location"
+        },
+        "modifications": {
+          "$ref": "#/definitions/Category"
+        },
+        "name": {
+          "$ref": "#/definitions/Category"
+        },
+        "observations": {
+          "$ref": "#/definitions/Category"
+        },
+        "owner": {
+          "$ref": "#/definitions/Category"
+        },
+        "plan": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "refDevice": {
+          "$ref": "#/definitions/RefDevice"
+        },
+        "sdg": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "seeAlso": {
+          "$ref": "#/definitions/SeeAlso"
+        },
+        "source": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "strategicObjective": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "type": {
+          "$ref": "#/definitions/AlternateName"
+        }
+      },
+      "required": [
+        "address",
+        "alternateName",
+        "areaServed",
+        "axis",
+        "category",
+        "challenges",
+        "dataProvider",
+        "dateCreated",
+        "dateModified",
+        "delegations",
+        "delegationsInvolved",
+        "description",
+        "id",
+        "image",
+        "interestGroups",
+        "location",
+        "modifications",
+        "name",
+        "observations",
+        "owner",
+        "plan",
+        "refDevice",
+        "sdg",
+        "seeAlso",
+        "source",
+        "strategicObjective",
+        "type"
+      ],
+      "title": "ProjectProperties"
+    },
+    "Address": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "properties": {
+          "$ref": "#/definitions/AddressProperties"
+        },
+        "type": {
+          "$ref": "#/definitions/AddressType"
+        },
+        "x-ngsi": {
+          "$ref": "#/definitions/XNgsi"
+        }
+      },
+      "required": [
+        "description",
+        "type",
+        "x-ngsi"
+      ],
+      "title": "Address"
+    },
+    "AddressProperties": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "addressCountry": {
+          "$ref": "#/definitions/Address"
+        },
+        "addressLocality": {
+          "$ref": "#/definitions/Address"
+        },
+        "addressRegion": {
+          "$ref": "#/definitions/Address"
+        },
+        "district": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "postOfficeBoxNumber": {
+          "$ref": "#/definitions/Address"
+        },
+        "postalCode": {
+          "$ref": "#/definitions/Address"
+        },
+        "streetAddress": {
+          "$ref": "#/definitions/Address"
+        },
+        "streetNr": {
+          "$ref": "#/definitions/AlternateName"
+        }
+      },
+      "required": [
+        "addressCountry",
+        "addressLocality",
+        "addressRegion",
+        "district",
+        "postOfficeBoxNumber",
+        "postalCode",
+        "streetAddress",
+        "streetNr"
+      ],
+      "title": "AddressProperties"
+    },
+    "AlternateName": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/AddressType"
+        },
+        "x-ngsi": {
+          "$ref": "#/definitions/XNgsiClass"
+        },
+        "format": {
+          "type": "string"
+        },
+        "items": {
+          "$ref": "#/definitions/XNgsiClass"
+        },
+        "properties": {
+          "$ref": "#/definitions/AlternateNameProperties"
+        },
+        "enum": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "description",
+        "type",
+        "x-ngsi"
+      ],
+      "title": "AlternateName"
+    },
+    "XNgsiClass": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/XNgsiType"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "XNgsiClass"
+    },
+    "AlternateNameProperties": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "alt": {
+          "$ref": "#/definitions/Alt"
+        },
+        "data": {
+          "$ref": "#/definitions/AlternateName"
+        },
+        "encoding": {
+          "$ref": "#/definitions/Category"
+        },
+        "link": {
+          "$ref": "#/definitions/Category"
+        },
+        "mediaType": {
+          "$ref": "#/definitions/Category"
+        }
+      },
+      "required": [
+        "alt",
+        "data",
+        "encoding",
+        "link",
+        "mediaType"
+      ],
+      "title": "AlternateNameProperties"
+    },
+    "Alt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/XNgsiType"
+        }
+      },
+      "required": [
+        "description",
+        "type"
+      ],
+      "title": "Alt"
+    },
+    "Category": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/AddressType"
+        },
+        "enum": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "x-ngsi": {
+          "$ref": "#/definitions/XNgsiClass"
+        },
+        "format": {
+          "type": "string"
+        },
+        "items": {
+          "$ref": "#/definitions/PurpleItems"
+        }
+      },
+      "required": [
+        "description",
+        "type"
+      ],
+      "title": "Category"
+    },
+    "PurpleItems": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/XNgsiType"
+        },
+        "anyOf": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AnyOf"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "x-ngsi": {
+          "$ref": "#/definitions/XNgsiClass"
+        }
+      },
+      "required": [],
+      "title": "PurpleItems"
+    },
+    "AnyOf": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "maxLength": {
+          "type": "integer"
+        },
+        "minLength": {
+          "type": "integer"
+        },
+        "pattern": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/XNgsiType"
+        },
+        "x-ngsi": {
+          "$ref": "#/definitions/XNgsiClass"
+        },
+        "format": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "description",
+        "type",
+        "x-ngsi"
+      ],
+      "title": "AnyOf"
+    },
+    "XNgsi": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "type": {
+          "$ref": "#/definitions/XNgsiType"
+        }
+      },
+      "required": [
+        "model",
+        "type"
+      ],
+      "title": "XNgsi"
+    },
+    "ID": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "anyOf": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AnyOf"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "x-ngsi": {
+          "$ref": "#/definitions/XNgsiClass"
+        }
+      },
+      "required": [
+        "anyOf",
+        "description",
+        "x-ngsi"
+      ],
+      "title": "ID"
+    },
+    "Location": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "oneOf": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LocationOneOf"
+          }
+        },
+        "x-ngsi": {
+          "$ref": "#/definitions/XNgsiClass"
+        }
+      },
+      "required": [
+        "description",
+        "oneOf",
+        "x-ngsi"
+      ],
+      "title": "Location"
+    },
+    "LocationOneOf": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "properties": {
+          "$ref": "#/definitions/OneOfProperties"
+        },
+        "required": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Required"
+          }
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/AddressType"
+        },
+        "x-ngsi": {
+          "$ref": "#/definitions/XNgsiClass"
+        }
+      },
+      "required": [
+        "description",
+        "properties",
+        "required",
+        "title",
+        "type",
+        "x-ngsi"
+      ],
+      "title": "LocationOneOf"
+    },
+    "OneOfProperties": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bbox": {
+          "$ref": "#/definitions/Bbox"
+        },
+        "coordinates": {
+          "$ref": "#/definitions/Coordinates"
+        },
+        "type": {
+          "$ref": "#/definitions/TypeClass"
+        }
+      },
+      "required": [
+        "bbox",
+        "coordinates",
+        "type"
+      ],
+      "title": "OneOfProperties"
+    },
+    "Bbox": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "$ref": "#/definitions/XNgsiClass"
+        },
+        "minItems": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "Bbox"
+    },
+    "Coordinates": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "$ref": "#/definitions/CoordinatesItems"
+        },
+        "minItems": {
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/definitions/AddressType"
+        }
+      },
+      "required": [
+        "items",
+        "type"
+      ],
+      "title": "Coordinates"
+    },
+    "CoordinatesItems": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "items": {
+          "$ref": "#/definitions/FluffyItems"
+        },
+        "minItems": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "CoordinatesItems"
+    },
+    "FluffyItems": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "items": {
+          "$ref": "#/definitions/Bbox"
+        },
+        "minItems": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "FluffyItems"
+    },
+    "TypeClass": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enum": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "$ref": "#/definitions/XNgsiType"
+        }
+      },
+      "required": [
+        "enum",
+        "type"
+      ],
+      "title": "TypeClass"
+    },
+    "RefDevice": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "items": {
+          "$ref": "#/definitions/ID"
+        },
+        "minItems": {
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/definitions/AddressType"
+        },
+        "uniqueItems": {
+          "type": "boolean"
+        },
+        "x-ngsi": {
+          "$ref": "#/definitions/XNgsiClass"
+        }
+      },
+      "required": [
+        "description",
+        "items",
+        "minItems",
+        "type",
+        "uniqueItems",
+        "x-ngsi"
+      ],
+      "title": "RefDevice"
+    },
+    "SeeAlso": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "oneOf": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SeeAlsoOneOf"
+          }
+        },
+        "x-ngsi": {
+          "$ref": "#/definitions/XNgsiClass"
+        }
+      },
+      "required": [
+        "description",
+        "oneOf",
+        "x-ngsi"
+      ],
+      "title": "SeeAlso"
+    },
+    "SeeAlsoOneOf": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "$ref": "#/definitions/TentacledItems"
+        },
+        "minItems": {
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/definitions/AddressType"
+        },
+        "format": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "SeeAlsoOneOf"
+    },
+    "TentacledItems": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "format": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/XNgsiType"
+        }
+      },
+      "required": [
+        "format",
+        "type"
+      ],
+      "title": "TentacledItems"
+    },
+    "XNgsiType": {
+      "type": "string",
+      "enum": [
+        "Property",
+        "string",
+        "number",
+        "GeoProperty",
+        "Relationship"
+      ],
+      "title": "XNgsiType"
+    },
+    "AddressType": {
+      "type": "string",
+      "enum": [
+        "string",
+        "array",
+        "object"
+      ],
+      "title": "AddressType"
+    },
+    "Required": {
+      "type": "string",
+      "enum": [
+        "type",
+        "coordinates"
+      ],
+      "title": "Required"
+    }
+  }
+}

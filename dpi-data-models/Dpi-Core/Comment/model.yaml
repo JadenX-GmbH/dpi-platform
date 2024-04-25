@@ -1,0 +1,121 @@
+Comment:
+  description: 'A Comment is the reply pushed by user to a specific Post in order to discuss a particular posted topic.'
+  properties:
+    id:
+      anyOf:
+        - description: Identifier format of any NGSI entity
+          maxLength: 256
+          minLength: 1
+          pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+          type: string
+          x-ngsi:
+            type: Property
+        - description: Identifier format of any NGSI entity
+          format: uri
+          type: string
+          x-ngsi:
+            type: Property
+      description: Unique identifier of the entity
+      x-ngsi:
+        type: Property
+    title:
+      description: A title for this item
+      type: string
+      x-ngsi:
+        type: Property
+    author:
+      description: The publisher of this Reply
+      type: string
+      x-ngsi:
+        type: Property
+    auth0AuthorID:
+      description: The publisher auth0 sub claim from token
+      type: string
+      x-ngsi:
+        type: Property
+    content:
+      description: The content of this Reply
+      type: string
+      x-ngsi:
+        model: https://schema.org/Text
+        type: Property
+    dateCreated:
+      description: Entity creation timestamp. This will usually be allocated by the storage platform
+      format: date-time
+      type: string
+      x-ngsi:
+        type: Property
+    dateModified:
+      description: Timestamp of the last modification of the entity. This will usually be allocated by the storage platform
+      format: date-time
+      type: string
+      x-ngsi:
+        type: Property
+    isCommitment:
+      description: 'True when this Item converted to Commitment, based on user request. False if its not(default)'
+      type: boolean
+      x-ngsi:
+        model: https://schema.org/Boolean
+        type: Property
+    keyData:
+      description: An item selected by user to be used as Commitment Key Data.
+      properties:
+        keyDataType:
+          description: The chosen type of the commitment keyData
+          type: string
+          enum:
+            - N/A
+            - Funds
+            - Date
+            - Months
+            - Days
+          x-ngsi:
+            type: Property
+        keyDataValue:
+          description: The string value of the keyData of the commitment
+          type: string
+          x-ngsi:
+            model: https://schema.org/Text
+            type: Property
+      type: object
+      x-ngsi:
+        type: Property
+    postedUnder:
+      anyOf:
+        - type: string
+          minLength: 1
+          maxLength: 256
+          pattern: '^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$'
+          description: Property. Identifier format of any NGSI entity
+        - type: string
+          format: uri
+          description: Property. Identifier format of any NGSI entity
+      description: >-
+        Relationship. Reference to the entity Project, that this Reply belongs to
+      x-ngsi:
+        type: Relationship
+    replyTo:
+      anyOf:
+        - type: string
+          minLength: 1
+          maxLength: 256
+          pattern: '^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$'
+          description: Property. Identifier format of any NGSI entity
+        - type: string
+          format: uri
+          description: Property. Identifier format of any NGSI entity
+      description: >-
+        Relationship. Reference to the entity Comment or Post, that this Reply belongs to
+      x-ngsi:
+        type: Relationship
+    type:
+      description: It must be equal to Comment
+      enum:
+        - Comment
+      type: string
+      x-ngsi:
+        type: Property
+  required:
+    - id
+    - type
+  type: object

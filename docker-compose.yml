@@ -1,0 +1,129 @@
+# WARNING: Do not deploy this tutorial configuration directly to a production environment
+#
+# The tutorial docker-compose files have not been written for production deployment and will not
+# scale. A proper architecture has been sacrificed to keep the narrative focused on the learning
+# goals, they are just used to deploy everything onto a single Docker machine. All FIWARE components
+# are running at full debug and extra ports have been exposed to allow for direct calls to services.
+# They also contain various obvious security flaws - passwords in plain text, no load balancing,
+# no use of HTTPS and so on.
+#
+# This is all to avoid the need of multiple machines, generating certificates, encrypting secrets
+# and so on, purely so that a single docker-compose file can be read as an example to build on,
+# not use directly.
+#
+# When deploying to a production environment, please refer to the Helm Repository
+# for FIWARE Components in order to scale up to a proper architecture:
+#
+# see: https://github.com/FIWARE/helm-charts/
+#
+version: "3.8"
+services:
+  # @context file is served from here
+  ld-context:
+    labels:
+      org.fiware: "tutorial"
+    image: httpd:alpine
+    hostname: context
+    container_name: fiware-ld-context
+    ports:
+      - "3004:80"
+    volumes:
+      - ./dpi-data-models:/usr/local/apache2/htdocs/
+    healthcheck:
+      test: (wget --server-response --spider --quiet  http://ld-context/ngsi-context.jsonld 2>&1 | awk 'NR==1{print $$2}'|  grep -q -e "200") || exit 1
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+  # Databases
+  mongo-db:
+    labels:
+      org.fiware: "tutorial"
+    image: mongo:${MONGO_DB_VERSION}
+    hostname: mongo-db
+    container_name: db-mongo
+    expose:
+      - "${MONGO_DB_PORT}"
+    networks:
+      - default
+    volumes:
+      - ./mongo-db:/data/db
+      - ./mongo-config:/data/configdb
+    healthcheck:
+      test: |
+        host=`hostname --ip-address || echo '127.0.0.1'`; 
+        mongo --quiet $host/test --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)' && echo 0 || echo 1
+      interval: 5s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+  # Orion is the context broker
+  orion:
+    labels:
+        org.fiware: "tutorial"
+    image: quay.io/fiware/orion-ld:${ORION_LD_VERSION}
+    hostname: orion
+    container_name: fiware-orion
+    depends_on:
+      - mongo-db
+    networks:
+      - default
+    expose:
+      - "${ORION_LD_PORT}"
+    ports:
+      - "${ORION_LD_PORT}:${ORION_LD_PORT}" # localhost:1026
+    environment:
+      - ORIONLD_MONGO_HOST=mongo-db
+      - ORIONLD_LOG_LEVEL=DEBUG
+      # - ORIONLD_CONTEXT_DOWNLOAD_TIMEOUT=20000
+    restart: always
+    healthcheck:
+      test: curl --fail -s http://orion:${ORION_LD_PORT}/version || exit 1
+      interval: 5s
+      retries: 15
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+  dpi-auth0-proxy:
+    container_name: dpi-auth0-proxy
+    build:
+      context: dpi-auth0-proxy
+      dockerfile: ./Dockerfile_fullBuild
+    image: jadenx/dpi-auth0-proxy:0.0.1
+    environment:
+      - ORIONCONTEXTBROKER_SERVER_URL=${SVCAUTH0PROXY_ORIONCONTEXTBROKER_SERVER_URL}
+      - ORGANIZATION_ID=${SVCAUTH0PROXY_ORGANIZATION_ID}
+      - SERVER_PORT=${SVCAUTH0PROXY_SERVER_PORT_INTERNAL}
+      - DPI_AUTH0_ORG_ID_VARIABLE_NAME=${SVCAUTH0PROXY_AUTH0_ORG_ID_VARIABLE_NAME}
+      - DPI_AUTH0_AUDIENCE=${SVCAUTH0PROXY_AUTH0_AUDIENCE}
+      - DPI_AUTH0_DOMAIN=${SVCAUTH0PROXY_AUTH0_DOMAIN}
+    ports:
+      - ${SVCAUTH0PROXY_SERVER_PORT_EXTERNAL}:${SVCAUTH0PROXY_SERVER_PORT_INTERNAL}
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+networks:
+  default:
+    labels:
+      org.fiware: "tutorial"
+    driver: bridge
+
+volumes:
+  mongo-db: ~
+  mongo-config: ~
+  data-models:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PWD}/dpi-data-models

@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: dpi-auth0-proxy
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://${auth0.domain}/
+
+  cloud:
+    gateway:
+      routes:
+        - id: orion-context-broker
+          uri: ${ORIONCONTEXTBROKER_SERVER_URL:http://localhost:1026}
+          predicates:
+            - Path=/**
+            - OrganizationPredicate=${ORGANIZATION_ID:.dpi}
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      httpserver:
+        wiretap: true
+
+auth0:
+  audience: ${DPI_AUTH0_AUDIENCE:YOUR_AUTH0_AUDIENCE}
+  domain: ${DPI_AUTH0_DOMAIN:YOUR_AUTH0_AUDIENCE}
+  organizationId: ${DPI_AUTH0_ORG_ID_VARIABLE_NAME:THE_AUTH0_ORGANIZATION_METADATA_VALUE _OF(org_id)}
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty: DEBUG
+server:
+  port: ${SERVER_PORT:8086}

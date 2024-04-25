@@ -1,0 +1,82 @@
+Canvas:
+  description: 'A Canvas Section specifies a topic stakeholders can collaborate on to reach commitments and ultimately an agreement. A Canvas Section might contain sub-sections.'
+  properties:
+    id:
+      anyOf:
+        - description: Identifier format of any NGSI entity
+          maxLength: 256
+          minLength: 1
+          pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+          type: string
+          x-ngsi:
+            type: Property
+        - description: Identifier format of any NGSI entity
+          format: uri
+          type: string
+          x-ngsi:
+            type: Property
+      description: Unique identifier of the entity
+      x-ngsi:
+        type: Property
+    title:
+      description: A title for this item
+      type: string
+      x-ngsi:
+        type: Property
+    topicsGroup:
+      description: The topic that this Canvas addresses
+      properties:
+        title:
+          description: The title of a topic Group
+          type: string
+          x-ngsi:
+            model: https://schema.org/Text
+            type: Property
+        groupId:
+          description: The id to identify the order of topic Group
+          minimum: 0
+          type: integer
+          x-ngsi:
+            model: https://schema.org/Number
+            type: Property
+      type: object
+      x-ngsi:
+        type: Property
+    order:
+      description:  The order of Canvas section in a group of topics
+      minimum: 0
+      type: integer
+      x-ngsi:
+        model: https://schema.org/Number
+        type: Property
+    description:
+      description: A description of this item
+      type: string
+      x-ngsi:
+        model: https://schema.org/Text
+        type: Property
+    belongsTo:
+      anyOf:
+        - type: string
+          minLength: 1
+          maxLength: 256
+          pattern: '^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$'
+          description: Property. Identifier format of any NGSI entity
+        - type: string
+          format: uri
+          description: Property. Identifier format of any NGSI entity
+      description: >-
+        Relationship. Reference to the entity Project that this Canvas belongs to .
+      x-ngsi:
+        type: Relationship
+    type:
+      description: It must be equal to Canvas
+      enum:
+        - Canvas
+      type: string
+      x-ngsi:
+        type: Property
+  required:
+    - id
+    - type
+  type: object

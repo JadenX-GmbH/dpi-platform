@@ -1,0 +1,65 @@
+Organization:
+  description: 'An Organization is a a representation of a contributor or a part of the process.'
+  properties:
+    id:
+      anyOf:
+        - description: Identifier format of any NGSI entity
+          maxLength: 256
+          minLength: 1
+          pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+          type: string
+          x-ngsi:
+            type: Property
+        - description: Identifier format of any NGSI entity
+          format: uri
+          type: string
+          x-ngsi:
+            type: Property
+      description: Unique identifier of the entity
+      x-ngsi:
+        type: Property
+    name:
+      description: A title for this item
+      type: string
+      x-ngsi:
+        type: Property
+    displayName:
+      description: The publisher of this Reply
+      type: string
+      x-ngsi:
+        type: Property
+    logoUrl:
+      description: The log of this Organization
+      type: string
+      x-ngsi:
+        model: https://schema.org/Text
+        type: Property
+    org_id:
+      description: The organization identifier metadata
+      type: string
+      x-ngsi:
+          model: https://schema.org/Text
+          type: Property
+    dateCreated:
+      description: Entity creation timestamp. This will usually be allocated by the storage platform
+      format: date-time
+      type: string
+      x-ngsi:
+        type: Property
+    dateModified:
+      description: Timestamp of the last modification of the entity. This will usually be allocated by the storage platform
+      format: date-time
+      type: string
+      x-ngsi:
+        type: Property
+    type:
+      description: It must be equal to Organization
+      enum:
+        - Organization
+      type: string
+      x-ngsi:
+        type: Property
+  required:
+    - id
+    - type
+  type: object

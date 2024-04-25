@@ -1,0 +1,10 @@
+# Build
+FROM maven:3.8.5-openjdk-17-slim AS build
+COPY . /app
+RUN --mount=type=cache,target=/root/.m2 mvn -f /app/pom.xml clean package -DskipTests -Ddockerfile.skip -Djar.finalName=app && mv /app/target/*.jar /app/target/app.jar
+
+# Package
+FROM openjdk:17-slim
+COPY --from=build /app/target/app.jar /app/target/app.jar
+EXPOSE 8086
+ENTRYPOINT ["java","-jar","-Djava.security.egd=file:/dev/./urandom","/app/target/app.jar"]

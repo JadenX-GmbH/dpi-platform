@@ -1,0 +1,50 @@
+---
+components:
+  schemas:
+    Inspection:
+      $ref: "https://context-files-s3.s3.eu-central-1.amazonaws.com/v1.1.1/Inspection.yaml#/Inspection"
+    Machine:
+      $ref: "https://context-files-s3.s3.eu-central-1.amazonaws.com/v1.1.1/Machine.yaml#/Machine"
+    Repair:
+      $ref: "https://context-files-s3.s3.eu-central-1.amazonaws.com/v1.1.1/Repair.yaml#/Repair"
+    Transfer:
+      $ref: "https://context-files-s3.s3.eu-central-1.amazonaws.com/v1.1.1/Transfer.yaml#/Transfer"
+    Activity:
+      $ref: "https://context-files-s3.s3.eu-central-1.amazonaws.com/v1.1.1/Activity.yaml#/Activity"
+    Asset:
+      $ref: "https://context-files-s3.s3.eu-central-1.amazonaws.com/v1.1.1/Asset.yaml#/Asset"
+    Claim:
+      $ref: "https://context-files-s3.s3.eu-central-1.amazonaws.com/v1.1.1/Claim.yaml#/Claim"
+    Attestation:
+      $ref: "https://context-files-s3.s3.eu-central-1.amazonaws.com/v1.1.1/Attestation.yaml#/Attestation"
+    DLTtxReceipt:
+      $ref: "https://context-files-s3.s3.eu-central-1.amazonaws.com/v1.1.1/DLTtxReceipt.yaml#/DLTtxReceipt"
+    Project:
+      $ref: "https://context-files-s3.s3.eu-central-1.amazonaws.com/v1.1.1/Project.yaml#/Project"
+    Canvas:
+      $ref: "https://context-files-s3.s3.eu-central-1.amazonaws.com/v1.1.1/Canvas.yaml#/Canvas"
+    Post:
+      $ref: "https://context-files-s3.s3.eu-central-1.amazonaws.com/v1.1.1/Post.yaml#/Post"
+    Milestone:
+      $ref: "https://context-files-s3.s3.eu-central-1.amazonaws.com/v1.1.1/Milestone.yaml#/Milestone"
+    Comment:
+      $ref: "https://context-files-s3.s3.eu-central-1.amazonaws.com/v1.1.1/Comment.yaml#/Comment"
+    Organization:
+      $ref: "https://context-files-s3.s3.eu-central-1.amazonaws.com/v1.1.1/Organization.yaml#/Organization"
+info:
+  description: "Base Model Definitions from Smart Data Models"
+  title: Baseline Models
+  version: "1.0.0"
+openapi: "3.0.0"
+
+# These paths are merely representative.
+paths:
+  /ngsi-ld/v1/entities:
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/ld+json:
+              schema:
+                type: object

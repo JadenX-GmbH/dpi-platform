@@ -1,0 +1,110 @@
+Milestone:
+  description: 'A milestone is the translation of legal text into an entity or unit that can be used in project management.'
+  properties:
+    id:
+      anyOf:
+        - description: Identifier format of any NGSI entity
+          maxLength: 256
+          minLength: 1
+          pattern: ^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$
+          type: string
+          x-ngsi:
+            type: Property
+        - description: Identifier format of any NGSI entity
+          format: uri
+          type: string
+          x-ngsi:
+            type: Property
+      description: Unique identifier of the entity
+      x-ngsi:
+        type: Property
+    title:
+      description: A title for this item
+      type: string
+      x-ngsi:
+        type: Property
+    author:
+      description: The publisher of this Post
+      type: string
+      x-ngsi:
+        type: Property
+    description:
+      description: The content of this Post
+      type: string
+      x-ngsi:
+        model: https://schema.org/Text
+        type: Property
+    dateCreated:
+      description: Entity creation timestamp. This will usually be allocated by the storage platform
+      format: date-time
+      type: string
+      x-ngsi:
+        type: Property
+    dateModified:
+      description: Timestamp of the last modification of the entity. This will usually be allocated by the storage platform
+      format: date-time
+      type: string
+      x-ngsi:
+        type: Property
+    dateFinalization:
+      description: Milestone finalization timestamp.
+      format: date-time
+      type: string
+      x-ngsi:
+        type: Property
+    percentageOfCompletion:
+      description: The percentage that represents terminated tasks in a milestone
+      minimum: 0.0
+      readOnly: true
+      type: number
+      x-ngsi:
+        type: Property
+    budget:
+      description: The allocated budget to a Milestone
+      minimum: 0.0
+      readOnly: true
+      type: number
+      x-ngsi:
+        type: Property
+    contributors:
+      description: All Contributors involved in the Milestone of a Project.
+      items:
+        type: string
+      minItems: 1
+      type: array
+      uniqueItems: true
+      x-ngsi:
+        type: Property
+    deliveryStatus:
+      description: >-
+        Property. The current Delivery status of the Entity Milestone. Enum:'pending, execution, achieved'
+      type: string
+      enum:
+        - PENDING
+        - EXECUTION
+        - ACHIEVED
+    belongsTo:
+      anyOf:
+        - type: string
+          minLength: 1
+          maxLength: 256
+          pattern: '^[\w\-\.\{\}\$\+\*\[\]`|~^@!,:\\]+$'
+          description: Property. Identifier format of any NGSI entity
+        - type: string
+          format: uri
+          description: Property. Identifier format of any NGSI entity
+      description: >-
+        Relationship. Reference to the entity Project, that this Milestone belongs to
+      x-ngsi:
+        type: Relationship
+    type:
+      description: It must be equal to Milestone
+      enum:
+        - Milestone
+      type: string
+      x-ngsi:
+        type: Property
+  required:
+    - id
+    - type
+  type: object

@@ -1,0 +1,1 @@
+export const TLD = process.env.REACT_APP_ENS_USED_TLD ?? "dpi"
