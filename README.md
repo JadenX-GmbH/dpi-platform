@@ -20,9 +20,9 @@ In this readme we document a docker compose file to deploy all dpi platform serv
 
 All of the following repositories must be cloned into the same folder as this repository (e.g. `../dpi-frontend`)
 
-* dpi-auth0-proxy
-* dpi-data-models
-* dpi-frontend
+* dpi-auth0-proxy https://github.com/Fouad-maker/dpi-platform/blob/main/dpi-auth0-proxy/README.md
+* dpi-data-models https://github.com/Fouad-maker/dpi-platform/blob/main/dpi-data-models/README.md
+* dpi-frontend https://github.com/Fouad-maker/dpi-platform/blob/main/dpi-frontend/README.md
 
 
 ### local deployment
@@ -43,7 +43,7 @@ SVCAUTH0PROXY_ORGANIZATION_ID=.dpi
 SVCAUTH0PROXY_ORIONCONTEXTBROKER_SERVER_URL=http://orion:1026
 SVCAUTH0PROXY_SERVER_PORT_EXTERNAL=8086
 SVCAUTH0PROXY_SERVER_PORT_INTERNAL=8086
-SVCAUTH0PROXY_AUTH0_ORG_ID_VARIABLE_NAME=THE_AUTH0_ORGANIZATION_METADATA_VALUE _OF(org_id)
+SVCAUTH0PROXY_AUTH0_ORG_ID_VARIABLE_NAME=auth.dpi.com
 SVCAUTH0PROXY_AUTH0_AUDIENCE=YOUR.AUTH0.AUDIENCE.URL
 SVCAUTH0PROXY_AUTH0_DOMAIN=YOUR.AUTH0.DOMAIN
 ```
