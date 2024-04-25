@@ -8,6 +8,7 @@ node_modules/
 dist/
 *.local
 *.env
+.env.dev
 
 # Compiled Java class files
 *.class
@@ -83,3 +84,5 @@ build/
 ### VS Code ###
 .vscode/
 /.idea/
+
+mongo-db
