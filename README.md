@@ -22,7 +22,7 @@ All of the following repositories must be cloned into the same folder as this re
 
 * dpi-auth0-proxy https://github.com/Fouad-maker/dpi-platform/blob/main/dpi-auth0-proxy/README.md
 * dpi-data-models https://github.com/Fouad-maker/dpi-platform/blob/main/dpi-data-models/README.md
-* dpi-frontend
+* dpi-frontend https://github.com/Fouad-maker/dpi-platform/blob/main/dpi-frontend/README.md
 
 
 ### local deployment
