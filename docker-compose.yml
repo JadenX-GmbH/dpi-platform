@@ -15,7 +15,7 @@ services:
     ports:
       - "3004:80"
     volumes:
-      - ./data-models:/usr/local/apache2/htdocs/
+      - ./dpi-data-models:/usr/local/apache2/htdocs/
     healthcheck:
       test: (wget --server-response --spider --quiet  http://ld-context/ngsi-context.jsonld 2>&1 | awk 'NR==1{print $$2}'|  grep -q -e "200") || exit 1
     logging:
@@ -113,4 +113,4 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ${PWD}/data-models
+      device: ${PWD}/dpi-data-models
