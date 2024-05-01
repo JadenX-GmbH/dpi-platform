@@ -37,7 +37,7 @@ MONGO_DB_PORT=27017
 MONGO_DB_VERSION=4.4
 
 ORION_LD_PORT=1026
-ORION_LD_VERSION=1.1.2
+ORION_LD_VERSION=1.3.0
 
 SVCAUTH0PROXY_ORGANIZATION_ID=.dpi
 SVCAUTH0PROXY_ORIONCONTEXTBROKER_SERVER_URL=http://orion:1026
@@ -73,4 +73,4 @@ We should avoid configuration drifts
 
 ## Who do I talk to? ##
 
-* Foued Hadded (foued.hadded@jadenx.com)
+* JadenX Opration Team (operations@jadenx.com)
