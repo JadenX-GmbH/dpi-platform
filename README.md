@@ -74,3 +74,9 @@ We should avoid configuration drifts
 ## Who do I talk to? ##
 
 * JadenX Opration Team (operations@jadenx.com)
+
+
+
+## License
+
+This project is licensed under the [GNU General Public License v3.0](LICENSE) - see the [LICENSE](https://github.com/JadenX-GmbH/dpi-platform/blob/main/LICENSE) file for details.
